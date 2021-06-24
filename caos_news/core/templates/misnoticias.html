@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+{% endblock css %}
+
+{% block contenido %}
+
+<main>
+    <div class="container my-5" >
+        <div class="row">
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-8 col-12" >
+                {% if noticias %}
+                <div class="row">
+                    <h2 class="text-center">Noticias en Moderación:</h2>
+                </div>
+                {% for noticia in noticias %}
+                <div class="row my-3">
+                    <div class="card mb-3 w-100">
+                        <img src="{{noticia.url_imagen}}" class="card-img-top w-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="link-primary"
+                                    href="noticiamoderacion/{{noticia.id}}">{{noticia.titular}}</a></h5>
+                            <p class="card-text">{{noticia.epigrafe}}</p>
+                            <p class="card-text"><small class="text-muted">última edición {{noticia.timestamp}} por
+                                    {{noticia.user}}</small></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center">Usuario {{user.username}} sin noticias en moderación.</h2>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
+                <form class="form-signin mx-5" onsubmit="return procesarForm()" method="POST"
+                    action="{% url 'registrarnoticias' %}">
+                    {% csrf_token %}
+                    <div class="form-label-group mb-3">
+                        <h3 class="text-center">Agregar Noticia</h3>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="txtCategoria" class="mb-2">Categoría:</label>
+                        <select class="form-select mb-2" aria-label="Default select example" name="cmbCategoria"
+                            id="cmbCategorias">
+                            <option value="-1" selected disabled>Seleccionar Categoría...</option>
+                            {% for categoria in categorias %}
+                            <option value={{categoria.id}}>{{categoria.nombre}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="txtTitulo" class="mb-2">Título:</label>
+                        <input type="text" class="form-control mb-2" id="txtTitulo" name="txtTitulo" required>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="txtEpigrafe" class="mb-2">Epígrafe:</label>
+                        <input type="text" class="form-control mb-2" id="txtEpigrafe" name="txtEpigrafe" required>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="txtImagen" class="mb-2">URL Imagen:</label>
+                        <input type="text" class="form-control mb-2" id="txtImagen" name="txtImagen" required>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="txtNoticia" class="mb-2">Noticia:</label>
+                        <textarea class="form-control mb-2" id="txtNoticia" name="txtNoticia" rows="5"
+                            required></textarea>
+                    </div>
+                    <button class="btn btn-primary mt-5" type="submit">Enviar Noticia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock contenido %}
+
+{% block js %}
+<script src="{% static '/swal/swal.js' %}"></script>
+{% endblock js %}

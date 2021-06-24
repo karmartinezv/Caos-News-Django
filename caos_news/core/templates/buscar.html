@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<main>
+
+    <div class="container">
+        {% if noticias %}
+        {% for noticia in noticias %}
+        <div class="row my-3">
+            <div class="card mb-3">
+                <img src="{{noticia.url_imagen}}" class="card-img-top w-25" >
+                <div class="card-body">
+                    <h5 class="card-title"><a class="link-primary" href="noticia/{{noticia.id}}">{{noticia.titular}}</a></h5>
+                    <p class="card-text">{{noticia.epigrafe}}</p>
+                    <p class="card-text"><small class="text-muted">última edición {{noticia.timestamp}} por {{noticia.user}}</small></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="row my-5">
+            <div class="d-flex align-items-center">
+                <h2 class="text-center">No se encontraron resultados para : {{buscarTitular}}</h2>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</main>
+
+{% endblock contenido %}

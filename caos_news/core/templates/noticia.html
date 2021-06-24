@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+    <main>
+        <div class="container col-8 my-5">
+            <div class="card mb-3">
+                <img src="{{noticia.url_imagen}}" class="card-img-top" alt="img art" style="height: 350px; width: 350px;">
+                <div class="card-body">
+                  <h5 class="card-title">{{noticia.titular}}</h5>
+                  <p class="card-text">{{noticia.epigrafe}}</p>
+                  <p class="card-text">{{noticia.contenido}}</p>
+                  <p class="card-text"><small class="text-muted">última edición {{noticia.timestamp}} por {{noticia.user}}</small></p>
+                </div>
+              </div>
+        </div>
+    </main>
+
+{% endblock contenido %}

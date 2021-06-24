@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+    <main>
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <img src="https://services.meteored.com/img/article/meteoredworldmetday-mas-energia-para-los-fenomenos-mas-destructivos-322471-1_1024.jpg" alt="img-clima" id="imgClima" style="height: 300px;">
+                <table class="table table-sm mt-3">
+                    <thead class="table-dark">
+                        <th class="text-center">Ciudad</th>
+                        <th class="text-center">Húmedad</th>
+                        <th class="text-center">Temperatura</th>
+                    </thead>
+                    <tbody id="tblClima">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3" class="text-center">Actualizado a las: <span id="horaUpdate"></span></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock contenido %}
