@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="{% static '/css/contacto.css' %}">
+    <link rel="stylesheet" href="{% static '/css/util.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+
+{% endblock css %}
+
+{% block contenido %}
+        <div class="bg-contact100">
+            <div class="container-contact100">
+                <div class="wrap-contact100">
+                    <div class="contact100-pic js-tilt" data-tilt="">
+                        <img src="{% static '/img/img-01.png' %}" alt="IMG">
+                    </div>
+                    
+                    <form class="contact100-form validate-form needs-validation" novalidate="">
+                        <span class="contact100-form-title">
+                            <h2 class="form-titulo">Escribenos tu noticia</h2>
+                        </span>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" required="">
+                            <div class="invalid-feedback">
+                            Nombre es requerido.
+                            </div>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="validationCustom02" placeholder="Apellido" required="">
+                            <div class="invalid-feedback">
+                            Apellido es requerido.
+                            </div>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="validationCustom03" placeholder="Email" required="">
+                            <div class="invalid-feedback">
+                            Email debe ser abc@gmail.com.
+                            </div>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="validationCustom04" placeholder="Titulo" required="">
+                            <div class="invalid-feedback">
+                            Titulo es requerido.
+                            </div>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            <textarea type="text" class="form-control" id="validationCustom05" placeholder="Mensaje" required=""></textarea>
+                            <div class="invalid-feedback">
+                            Mensaje es requerido.
+                            </div>
+                        </div>
+
+                        <div class="container-contact100-form-btn">
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-info" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+ {% endblock contenido %}
+
+{% block js %}
+    <script class="Javascript">
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+                })
+            })()
+        </script>
+{% endblock js %}

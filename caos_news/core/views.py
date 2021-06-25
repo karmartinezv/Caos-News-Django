@@ -150,3 +150,6 @@ def registrarnoticias(request):
     else:
         response = redirect('misnoticias')
         return response
+
+def contacto(request):
+    return render(request, "contacto.html")

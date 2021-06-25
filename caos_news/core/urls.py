@@ -1,5 +1,5 @@
 from core.models import NoticiaModeracion
-from core.views import buscar, clima, deportes, index, internacional, login, misnoticias, moderarnoticias, nacional, noticia, cerrar, noticiamoderacion, registrarnoticias
+from core.views import buscar, clima, deportes, index, internacional, login, misnoticias, moderarnoticias, nacional, noticia, cerrar, noticiamoderacion, registrarnoticias, contacto
 from django.contrib import admin
 from django.urls import path
 
@@ -16,5 +16,6 @@ urlpatterns = [
     path('cerrar', cerrar, name='cerrar'),
     path('misnoticias', misnoticias, name='misnoticias'),
     path('moderarnoticias', moderarnoticias, name='moderarnoticias'),
-    path('registrarnoticias', registrarnoticias, name='registrarnoticias')
+    path('registrarnoticias', registrarnoticias, name='registrarnoticias'),
+    path('contacto', contacto, name='contacto')
 ]
